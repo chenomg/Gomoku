@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Gomoku.Properties.Resources.board;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(734, 741);
+            this.ClientSize = new System.Drawing.Size(741, 741);
             this.MaximizeBox = false;
             this.Name = "GameForm1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -10,9 +10,9 @@ namespace Gomoku
     class Board
     {
 
-        private static readonly int offset = 60;
+        private static readonly int offset = 70;
         private static readonly int Pitch = 75;
-        private static readonly int Radius = 5;
+        private static readonly int Radius = 15;
         private static readonly Point NoMatchPoint = new Point(-1, -1);
         /*
         public bool CanBePlaced(int x,int y)
