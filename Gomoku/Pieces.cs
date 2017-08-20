@@ -10,12 +10,12 @@ namespace Gomoku
 {
     class Pieces : PictureBox
     {
-        private static int PIECEWIDETH = 50;
+        private static readonly int PIECEWIDETH = 50;
         public Pieces (int x,int y)
         {
             this.BackColor = Color.Transparent;
             this.Size = new Size(PIECEWIDETH, PIECEWIDETH);
-            this.Location = new Point(x, y);
+            this.Location = new Point(x - PIECEWIDETH/2, y - PIECEWIDETH/2);
         }
         
     }

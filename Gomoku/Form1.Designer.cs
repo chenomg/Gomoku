@@ -36,10 +36,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Gomoku.Properties.Resources.board;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(734, 712);
+            this.ClientSize = new System.Drawing.Size(734, 741);
+            this.MaximizeBox = false;
             this.Name = "GameForm1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gomoku - by Jase";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameForm1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameForm1_MouseMove);
             this.ResumeLayout(false);
 
         }
