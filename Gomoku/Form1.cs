@@ -36,16 +36,24 @@ namespace Gomoku
         private void GameForm1_MouseDown(object sender, MouseEventArgs e)
         {
             //Greeting();
-            if (IsBlack == true)
+            Board ClickPointBoard = new Gomoku.Board();
+            Point ActiveXY = ClickPointBoard.ActivePoint(e.X, e.Y);
+            int x = ClickPointBoard.FindClossestNum(e.X);
+            int y = ClickPointBoard.FindClossestNum(e.Y);
+            if (ActiveXY != new Point(-1, -1))
             {
-                this.Controls.Add(new BlackPiece(e.X, e.Y));
-                IsBlack = false;
+                if (IsBlack == true)
+                {
+                    this.Controls.Add(new BlackPiece(x, y));
+                    IsBlack = false;
+                }
+                else if (IsBlack == false)
+                {
+                    this.Controls.Add(new WhitePiece(x, y));
+                    IsBlack = true;
+                }
             }
-            else if(IsBlack == false)
-            {
-                this.Controls.Add(new WhitePiece(e.X, e.Y));
-                IsBlack = true;
-            }
+            else return;
         }
 
         private void GameForm1_MouseMove(object sender, MouseEventArgs e)
