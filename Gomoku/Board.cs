@@ -14,7 +14,7 @@ namespace Gomoku
         private static readonly int Pitch = 74;
         private static readonly int Radius = 15;
         public static readonly Point NoMatchPoint = new Point(-1, -1);
-        protected Point[] ActivedPoint = new Point[99];
+
         /*
         public bool CanBePlaced(int x,int y)
         {
@@ -42,6 +42,12 @@ namespace Gomoku
             }
 
         }
+        public int FindIndexNum(int Pos)
+        {
+            Pos -= offset;
+            int ShangPos = Pos / Pitch;
+            return ShangPos;
+        }
         public Point ActivePoint(int x, int y)
         {
             Point ActivePoint = new Point(x,y);
@@ -53,5 +59,6 @@ namespace Gomoku
             }
             else return NoMatchPoint;
         }
+        
     }
 }
