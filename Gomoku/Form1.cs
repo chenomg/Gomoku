@@ -59,13 +59,14 @@ namespace Gomoku
                     this.Controls.Add(new BlackPiece(x, y));
                     IsBlack = false;
                     PointedPiece[IndexX,IndexY] = 1;
-                    BlackWinTheGame(IndexX,IndexY);
+                    WhoWinTheGame(IndexX,IndexY,"黑子",1);
                 }
                 else if (IsBlack == false)
                 {
                     this.Controls.Add(new WhitePiece(x, y));
                     IsBlack = true;
-                    PointedPiece[IndexX, IndexY] = 0;
+                    PointedPiece[IndexX, IndexY] = 11;
+                    WhoWinTheGame(IndexX, IndexY, "白子",11);
                 }
             }
             else return;
@@ -80,46 +81,88 @@ namespace Gomoku
             }
             else this.Cursor = Cursors.Arrow;
         }
-        public void BlackWinTheGame(int IndexXX, int IndexYY)
+        public void WhoWinTheGame(int IndexXX, int IndexYY, string Name, int Flag)
         {
             //bool BlackWin = false;
-            int count = 0 ;
-            for(int i=0; i<9 && count<5 ;i++)
+            int count = 0;
+            for (int i = 0; i < 9 && count < 5; i++)
             {
-                if (PointedPiece[i, IndexYY] == 1)
+                if (PointedPiece[i, IndexYY] == Flag)
                     count++;
                 else count = 0;
+
             }
-            //MessageBox.Show("X方向" + count);
             if (count == 5)
             {
-                MessageBox.Show("恭喜你，黑子获胜！");
+                MessageBox.Show("恭喜你，" + Name + "获胜！");
                 this.Controls.Clear();
                 IsBlack = true;
                 InitialArray();
-            }                
-            else if (count<5)
+            }
+            //MessageBox.Show("X方向" + count);
+
+            else //if (count == 0)
             {
-                for (int i = 0; i < 9 && count<5; i++)
+                for (int i = 0; i < 9 && count < 5; i++)
                 {
-                    if (PointedPiece[IndexXX, i] == 1)
+                    if (PointedPiece[IndexXX, i] == Flag)
                         count++;
                     else count = 0;
+                    if (count == 5)
+                    {
+                        MessageBox.Show("恭喜你，" + Name + "获胜！");
+                        this.Controls.Clear();
+                        IsBlack = true;
+                        InitialArray();
+                        count = 0;
+                    }
                 }
-                if (count >= 5)
+
+                for (int i = -4; i < 5 && count < 5; i++)
                 {
-                    MessageBox.Show("恭喜你，黑子获胜！");
-                    this.Controls.Clear();
-                    IsBlack = true;
-                    InitialArray();
+                    if (IndexXX + i >= 0 && IndexXX + i < 9 && IndexYY + i >= 0 && IndexYY + i < 9)
+                    {
+                        if (PointedPiece[IndexXX + i, IndexYY + i] == Flag)
+                        {
+                            count++;
+                            //MessageBox.Show("计数检查" + count);
+                        }
+                        else count = 0;
+                    }
+                    if (count == 5)
+                    {
+                        MessageBox.Show("恭喜你，" + Name + "获胜！");
+                        this.Controls.Clear();
+                        IsBlack = true;
+                        InitialArray();
+                        count = 0;
+                    }
                 }
-                //MessageBox.Show("Y方向" + count);
-            }
-            else if(count<5)
-            {
+                for (int i = -4; i < 5 && count < 5; i++)
+                {
+                    if (IndexXX + i >= 0 && IndexXX + i < 9 && IndexYY - i >= 0 && IndexYY - i < 9)
+                    {
+                        if (PointedPiece[IndexXX + i, IndexYY - i] == Flag)
+                        {
+                            count++;
+                            //MessageBox.Show("计数检查" + count);
+                        }
+                        else count = 0;
+                    }
+                    if (count == 5)
+                    {
+                        MessageBox.Show("恭喜你，" + Name + "获胜！");
+                        this.Controls.Clear();
+                        IsBlack = true;
+                        InitialArray();
+                        count = 0;
+                    }
+                }
 
             }
-            
+
         }
+
+
     }
 }
